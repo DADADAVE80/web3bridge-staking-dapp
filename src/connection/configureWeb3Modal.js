@@ -7,7 +7,7 @@ const mumbai = {
     name: "Mumbai",
     currency: "Matic",
     explorerUrl: "https://mumbai.polygonscan.com",
-    rpcUrl: import.meta.env.VITE_rpc_url,
+    rpcUrl: import.meta.env.VITE_MUMBAI_HTTPS_RPC_URL,
 };
 
 const metadata = {
@@ -21,6 +21,6 @@ export const configureWeb3Modal = () =>
     createWeb3Modal({
         ethersConfig: defaultConfig({ metadata }),
         chains: [mumbai],
-        projectId: import.meta.env.VITE_projectId,
+        projectId: import.meta.env.VITE_WC_PROJECTID,
         enableAnalytics: false, // Optional - defaults to your Cloud configuration
     });
