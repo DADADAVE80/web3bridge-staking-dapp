@@ -1,6 +1,7 @@
-import { useWeb3ModalProvider } from "@web3modal/ethers/react"
+import { useWeb3ModalAccount, useWeb3ModalProvider } from "@web3modal/ethers/react"
 import { useCallback } from "react";
-import { getStakingPoolContract, getStakingPoolContractSigner, isSupportedChain } from "../constants/contracts";
+import { getStakeToken, getStakingPoolContract, getStakingPoolContractSigner, isSupportedChain } from "../constants/contracts";
+import { getReadWriteProvider } from "../constants/providers";
 
 const useStake = () => {
     const { chainId } = useWeb3ModalAccount();
@@ -11,13 +12,14 @@ const useStake = () => {
             if (!isSupportedChain(chainId))
                 return console.error("Wrong network");
 
-            const provider = new BrowserProvider(walletProvider);
-            const signer = await provider.getSigner();
+            const readWriteProvider = getReadWriteProvider(walletProvider);
+            const signer = await readWriteProvider.getSigner();
 
-            const contract = getStakingPoolContract(signer);
+            const stakingPoolContract = getStakingPoolContract(signer);
+            const stakeTokenContract = getStakeToken(signer);
 
             try {
-                const transaction = await contract.stake(poolId, amount);
+                const transaction = await stakingPoolContract.stake(poolId, amount);
                 console.log("transaction: ", transaction);
                 const receipt = await transaction.wait();
 

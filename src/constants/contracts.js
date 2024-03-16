@@ -1,5 +1,5 @@
 import { ethers } from "ethers";
-import stakingPoolAbi from "./Staking.json";
+import stakingPoolAbi from "./stakingPool.json";
 import erc20Abi from "./ERC20.json";
 import { SUPPORTED_CHAIN } from "../connection/configureWeb3Modal";
 
@@ -10,14 +10,14 @@ export const getStakingPoolContract = (provider) =>
         provider
     );
 
-export const getStakeTokens = (provider) =>
+export const getStakeToken = (provider) =>
     new ethers.Contract(
         import.meta.env.VITE_STAKE_TOKEN_CONTRACT_ADDRESS,
         erc20Abi,
         provider
     );
 
-export const getRewardTokens = (provider) =>
+export const getRewardToken = (provider) =>
     new ethers.Contract(
         import.meta.env.VITE_REWARD_TOKEN_CONTRACT_ADDRESS,
         erc20Abi,

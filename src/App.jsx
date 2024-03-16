@@ -1,25 +1,23 @@
-import {configureWeb3Modal} from './connection/configureWeb3Modal';
+import { configureWeb3Modal } from './connection/configureWeb3Modal';
 import '@radix-ui/themes/styles.css';
 import './index.css';
 import Header from './components/Header';
-import {Container} from "@radix-ui/themes";
+import { Container } from "@radix-ui/themes";
 import AppTabs from './components/AppTabs';
 
 configureWeb3Modal();
 
 function App() {
-    return (
-        <>
-            <Container>
-                <Header/>
-                <main>
-                  <AppTabs
-                  
-                  />
-                </main>
-            </Container>
-        </>
-    )
+  return (
+    <>
+      <Container>
+        <Header />
+        <main>
+          <AppTabs />
+        </main>
+      </Container>
+    </>
+  )
 }
 
 export default App
