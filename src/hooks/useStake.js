@@ -1,6 +1,6 @@
 import { useWeb3ModalAccount, useWeb3ModalProvider } from "@web3modal/ethers/react"
 import { useCallback } from "react";
-import { getStakeToken, getStakingPoolContract, getStakingPoolContractSigner, isSupportedChain } from "../constants/contracts";
+import { getStakingPoolContract, isSupportedChain } from "../constants/contracts";
 import { getReadWriteProvider } from "../constants/providers";
 
 const useStake = () => {
@@ -16,7 +16,6 @@ const useStake = () => {
             const signer = await readWriteProvider.getSigner();
 
             const stakingPoolContract = getStakingPoolContract(signer);
-            const stakeTokenContract = getStakeToken(signer);
 
             try {
                 const transaction = await stakingPoolContract.stake(poolId, amount);

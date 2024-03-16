@@ -1,6 +1,7 @@
 import { Box, Text, Tabs } from "@radix-ui/themes";
 import Stake from "./Stake";
 import CreatePool from "./CreatePool";
+import StakingPools from "./StakingPools";
 
 const AppTabs = () => {
     return (
@@ -13,6 +14,7 @@ const AppTabs = () => {
             <Box px="4" pt="3" pb="2">
                 <Tabs.Content value="staking-pools">
                     <Text size="2">{CreatePool}</Text>
+                    <StakingPools />
                     <Stake />
                 </Tabs.Content>
 

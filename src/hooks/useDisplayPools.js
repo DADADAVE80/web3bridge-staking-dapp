@@ -1,12 +1,12 @@
 import { getStakingPoolContract } from "../constants/contracts";
 import { getJsonReadOnlyProvider } from "../constants/providers";
 import stakingAbi from "../constants/stakingPool.json";
-import multicallAbi from "../constants/multicall.json";
+import multicallAbi from "../constants/mumbaiMulticall.json";
 import { ethers } from "ethers";
 import { useState, useEffect } from "react";
 
 const useDisplayPools = () => {
-    const [displayPools, setDisplayPools] = useState([]);
+    const [pools, setPools] = useState([]);
     const [numOfPool, setNumOfPool] = useState(0);
 
     const stakingPoolContract = getStakingPoolContract(getJsonReadOnlyProvider);
@@ -49,11 +49,11 @@ const useDisplayPools = () => {
             const decodedResponses = validResponses.map((x) =>
                 itf.decodeFunctionResult("getPoolByID", x[1]));
 
-            setData(decodedResponses);
+            setPools(decodedResponses);
         }
     }, []);
 
-    return displayPools;
+    return pools;
 };
 
 export default useDisplayPools;
