@@ -3,6 +3,7 @@ import '@radix-ui/themes/styles.css';
 import './index.css';
 import Header from './components/Header';
 import { Container } from "@radix-ui/themes";
+import { Toaster } from "react-hot-toast";
 import AppTabs from './components/AppTabs';
 
 configureWeb3Modal();
@@ -10,12 +11,11 @@ configureWeb3Modal();
 function App() {
   return (
     <>
-      <Container>
-        <Header />
-        <main>
-          <AppTabs />
-        </main>
-      </Container>
+      <Header />
+      <Toaster />
+      <main>
+        <AppTabs />
+      </main>
     </>
   )
 }
