@@ -17,7 +17,7 @@ const CreatePool = () => {
     return (
         <Dialog.Root>
             <Dialog.Trigger>
-                <Button className="bg-blue-600">Create Pool</Button>
+                <Button className="bg-blue-600" style={{background:"blue"}}>Create Pool</Button>
             </Dialog.Trigger>
 
             <Dialog.Content style={{ maxWidth: 450 }}>

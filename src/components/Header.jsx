@@ -3,14 +3,14 @@ import CreatePool from "./CreatePool";
 
 export default function Header() {
     return (
-        <div className="flex justify-between items-center">
+        <Flex className="flex justify-between items-center" justify={'between'} align={'center'}>
             <Flex gap={"4"} align={"center"}>
                 <div>Staking Pools</div>
             </Flex>
             <Flex>
-                <CreatePool />
+                <CreatePool style={{backgroundColor: "red"}} />
                 <w3m-button />
             </Flex>
-        </div>
+        </Flex>
     );
 }

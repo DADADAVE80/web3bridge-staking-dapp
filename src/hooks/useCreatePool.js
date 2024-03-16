@@ -26,11 +26,13 @@ const useCreatePool = (rewardRate) => {
 
             try {
                 const loadingToast1 = toast.loading('Approving Contract spend...');
-                const txERC20Mint = await rewardContract.mint(signer.getAddress(), ethers.parseUnits("100", 18));
-                await txERC20Mint.wait();
+                // const txERC20Mint = await rewardContract.mint(
+                //     signer.getAddress(), ethers.parseUnits("100", 18)
+                //     );
+                // await txERC20Mint.wait();
 
                 const txERC20Approval = await rewardContract.approve(
-                    import.meta.env.VITE_STAKE_TOKEN_CONTRACT_ADDRESS, ethers.parseUnits("100", 18)
+                    import.meta.env.VITE_STAKING_POOL_CONTRACT_ADDRESS, ethers.parseUnits("100", 18)
                 );
                 await txERC20Approval.wait()
                 toast.remove(loadingToast1)
@@ -49,8 +51,8 @@ const useCreatePool = (rewardRate) => {
 
                 console.log("Failed to unstake");
             } catch (error) {
-                // toast.remove(loadingToast1)
-                // toast.remove(loadingToast2)
+                toast.remove(loadingToast1)
+                toast.remove(loadingToast2)
 
                 console.log(error);
 

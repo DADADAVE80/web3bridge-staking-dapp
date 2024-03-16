@@ -11,11 +11,13 @@ configureWeb3Modal();
 function App() {
   return (
     <>
-      <Header />
-      <Toaster />
-      <main>
-        <AppTabs />
-      </main>
+      <Container>
+        <Header />
+        <Toaster />
+        <main>
+          <AppTabs />
+        </main>
+      </Container>
     </>
   )
 }

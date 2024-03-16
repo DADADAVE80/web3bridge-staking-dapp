@@ -1,6 +1,7 @@
 import { useState } from "react";
 import useStake from "../hooks/useStake";
 import { Box, Button, Card, Flex, Text, TextField } from "@radix-ui/themes";
+import { ethers } from "ethers";
 
 export default function Stake() {
     const [stakeAmount, setStakeAmount] = useState(0);
@@ -23,9 +24,12 @@ export default function Stake() {
                             <Text as="div" size="2" mb="1" weight="bold">
                                 Stake amount
                             </Text>
-                            <TextField.Input value={stakeAmount} placeholder="Enter stake amount" onChange={(e) => setStakeAmount(e.target.value)} />
+                            <TextField.Input 
+                            value={stakeAmount} placeholder="Enter stake amount" onChange={(e) => 
+                                setStakeAmount(e.target.value)} 
+                            />
                         </label>
-                        <Button onClick={() => handleStake(poolId, stakeAmount)}>
+                        <Button onClick={() => handleStake(poolId, ethers.parseUnits(`${stakeAmount}`, 18))}>
                             Stake
                         </Button>
                     </Flex>
