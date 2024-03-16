@@ -1,6 +1,7 @@
 import { ethers } from "ethers";
 import stakingPoolAbi from "./Staking.json";
 import erc20Abi from "./ERC20.json";
+import { SUPPORTED_CHAIN } from "../connection/configureWeb3Modal";
 
 export const getStakingPoolContract = (provider) =>
     new ethers.Contract(
@@ -22,3 +23,11 @@ export const getRewardTokens = (provider) =>
         erc20Abi,
         provider
     );
+
+export const isSupportedChain = (chainId) =>
+    Number(chainId) === SUPPORTED_CHAIN;
+
+export const getStakingPoolContractSigner = async (provider) => {
+    const signer = await provider.getSigner();
+    return getStakingPoolContract(signer);
+};
